@@ -25,7 +25,8 @@
         "symfony/validator": "^4.1",
         "symfony/web-link": "^4.1",
         "symfony/webpack-encore-pack": "*",
-        "symfony/yaml": "^4.1"
+        "symfony/yaml": "^4.1",
+        "elasticsearch/elasticsearch": "~6.0"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
