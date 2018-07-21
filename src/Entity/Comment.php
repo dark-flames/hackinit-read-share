@@ -4,13 +4,14 @@ namespace ReadShare\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ReadShare\Library\Frontend\FrontendSerializableInterface;
+use ReadShare\Library\SearchEngine\SearchableInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="comment")
  * @ORM\Cache("NONSTRICT_READ_WRITE")
  */
-class Comment implements FrontendSerializableInterface {
+class Comment implements FrontendSerializableInterface, SearchableInterface {
     /**
      * @var int
      *

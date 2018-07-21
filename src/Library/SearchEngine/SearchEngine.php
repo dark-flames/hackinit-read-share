@@ -35,6 +35,7 @@ class SearchEngine {
         $typeName = DocumentModelType::toString($type);
 
         //删除原有索引
+
         try {
             $this->elasticsearch->instance->indices()
                 ->delete(['index' => self::IndexName . $typeName]);
@@ -80,7 +81,7 @@ class SearchEngine {
 
         //新建索引并更新所有数据
         $this->elasticsearch->instance->indices()->create($indexConfig);
-        $documentModel->updateDocumentsByEntities($this);
+        //$documentModel->updateDocumentsByEntities($this);
     }
 
     /**

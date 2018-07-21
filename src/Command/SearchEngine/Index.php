@@ -30,6 +30,7 @@ class Index extends Command {
     protected function execute(InputInterface $input, OutputInterface $output) {
         $typeName = $input->getArgument("type");
         $type = DocumentModelType::getType($typeName);
+        $output->writeln("Start Build index $typeName");
         $this->searchEngine->buildIndex($type);
         $output->writeln("Finish Build index $typeName");
     }

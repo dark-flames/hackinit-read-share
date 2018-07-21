@@ -9,7 +9,6 @@ class CustomAnalyzerRegistry {
     public function __construct() {
         self::$instance = $this;
         $this->register(new ChineseHTMLAnalyzer());
-        $this->register(new ChineseSortableAnalyzer());
         $this->register(new EnglishContentAnalyzer());
     }
 

@@ -11,12 +11,8 @@
     "version": 1,
     "value": "/_service/ocr"
   },
-  "ocrParam": {
-    "version": 1,
-    "value": {
-      "appId": "#AIP_ID#" ,
-      "ak": "#AIP_AK#",
-      "sk": "#AIP_SK#"
-    }
+  "ocrHost": {
+    "version": 4,
+    "value": "#OCR_SERVER#"
   }
 }

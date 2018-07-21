@@ -4,10 +4,11 @@ namespace ReadShare\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use ReadShare\Entity\User;
 
 class IndexController extends AbstractController {
     /**
-     * @Route("/test", name="test")
+     * @Route("/app", name="app")
      * @return Response
      */
     public function testAction() {
@@ -17,27 +18,19 @@ class IndexController extends AbstractController {
             [ 'test' => 'hw']
         );
     }
-
     /**
-     * @Route("/login", name="login")
-     *
-     * @param Request $request
+     * @Route("/", name="homepage")
      * @return Response
      */
-    public function loginAction(Request $request) {
-        $authenticationUtils = $this->get('security.authentication_utils');
+    public function indexAction(Request $request) {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')
+            ->getToken()
+            ->getUser();
 
-        $error = $authenticationUtils->getLastAuthenticationError();
-
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render(
-            'index/login.html.twig',
-            array(
-                // last username entered by the user
-                'last_username' => $lastUsername,
-                'error' => $error,
-            )
-        );
+        if($user instanceof User)
+            return $this->redirectToRoute('app');
+        else
+            return $this->redirectToRoute('login');
     }
 }

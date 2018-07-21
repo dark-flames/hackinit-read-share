@@ -1,6 +1,6 @@
 security:
     encoders:
-        AppBundle\Entity\User:
+        ReadShare\Entity\User:
             algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -18,8 +18,8 @@ security:
                 path:   /logout
                 target: /
             form_login:
-                login_path: login
-                check_path: login
+                login_path: /login
+                check_path: /login
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: /
 

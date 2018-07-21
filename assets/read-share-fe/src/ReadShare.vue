@@ -1,21 +1,25 @@
 <template>
   <div class="hello">
-    hello world
-    <h1 :style="{ color: color }">{{ test }}</h1>
-    <span class="test">233</span>
-    <upload-file-test/>
+    <picture-read-block @change="updateContent"/>
+    {{ content }}
   </div>
 </template>
 
 <script>
 import UploadFileTest from './components/UploadFileTest.vue'
+import PictureReadBlock from './components/ReadBlock/PictureReadBlock.vue'
 
 export default {
   name: 'ReadShare',
-  components: {UploadFileTest},
-  computed: {
-    color () {
-      return this.$config.color
+  components: { UploadFileTest, PictureReadBlock },
+  data () {
+    return {
+      content: ''
+    }
+  },
+  methods: {
+    updateContent (data) {
+      this.content = data
     }
   }
 }

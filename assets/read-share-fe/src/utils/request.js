@@ -1,37 +1,23 @@
 import axios from 'axios'
+import qs from 'qs'
 
-let csrfToken = null
-
-if (document.querySelector('meta[name="csrf-token"]')) { csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content') }
-
-axios.defaults.headers.common = {
-  'X-Requested-With': 'XMLHttpRequest',
-  'X-CSRF-TOKEN': csrfToken
-}
-
-const MaxTimeout = 2000
-
-axios.defaults.timeout = MaxTimeout
-
-const request = async (param) => {
+const request = async conf => {
   try {
-    const { status, data } = await axios.request(param)
+    const { status, data } = await axios.request(conf)
 
-    if (status !== 200) {
-      const errorMessage = data.error ? data.error : 'Unknow'
-      throw new Error(`Request Error on ${param.url}: ${status} - ${errorMessage}`)
-    }
+    if (status !== 200) throw new Error(`Request HTTP Error: ${status}`)
     return data
   } catch (e) {
-    console.log(e)
+    console.error(e)
     throw e
   }
 }
 
 const requestGet = async (url, params = null) => request({ method: 'get', url, params })
 const requestPost = async (url, data, params = null) => request({ method: 'post', url, params, data })
+const requestPostQS = async (url, params) => request({ method: 'post', url, data: qs.stringify(params) })
 
 export {
   axios,
-  requestGet, requestPost
+  requestGet, requestPost, requestPostQS
 }

@@ -51,7 +51,7 @@ class User implements UserInterface, FrontendSerializableInterface {
     /**
      * @return int
      */
-    public function getUid(): int {
+    public function getUid(): ? int {
         return $this->uid;
     }
 
@@ -67,7 +67,7 @@ class User implements UserInterface, FrontendSerializableInterface {
     /**
      * @return string
      */
-    public function getUsername(): string {
+    public function getUsername(): ? string {
         return $this->username;
     }
 
@@ -83,7 +83,7 @@ class User implements UserInterface, FrontendSerializableInterface {
     /**
      * @return string
      */
-    public function getPassword(): string {
+    public function getPassword(): ? string {
         return $this->password;
     }
 
@@ -99,7 +99,7 @@ class User implements UserInterface, FrontendSerializableInterface {
     /**
      * @return string
      */
-    public function getEmail(): string {
+    public function getEmail(): ? string {
         return $this->email;
     }
 
@@ -129,7 +129,7 @@ class User implements UserInterface, FrontendSerializableInterface {
     }
 
     public function getSalt() {
-        return $this->username . getenv('SECURITY_SALT');
+        return null;
     }
 
     public function eraseCredentials() {

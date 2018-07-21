@@ -6,7 +6,7 @@
   "author": "dark-flames <dark_flames@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "build": "eslint . --ext .js,.vue && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "eslint . --ext --fix .js,.vue && cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build-dev": "eslint . --ext .js,.vue && cross-env NODE_ENV=development webpack --progress --hide-modules",
     "lint": "eslint . --ext .js,.vue",
     "lint-fix": "eslint . --fix --ext .js,.vue",
@@ -40,6 +40,7 @@
     "qs": "^6.5.2",
     "vue": "^2.5.16",
     "vue-loader": "^13.0.5",
+    "vue-sweetalert2": "^1.5.0",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"

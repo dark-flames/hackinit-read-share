@@ -5,13 +5,17 @@ namespace ReadShare\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use ReadShare\Entity\Comment;
 use ReadShare\Entity\User;
+use ReadShare\Library\SearchEngine\SearchEngine;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class CommentManager {
     private $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager) {
+    private $searchEngine;
+
+    public function __construct(EntityManagerInterface $entityManager, SearchEngine $searchEngine) {
         $this->entityManager = $entityManager;
+        $this->searchEngine = $searchEngine;
     }
 
     /**
@@ -42,5 +46,6 @@ class CommentManager {
             ->setTargetContent($targetContent);
 
         $this->entityManager->persist($comment);
+        $this->searchEngine->updateByEntity($comment);
     }
 }
