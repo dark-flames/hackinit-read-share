@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                    <div class="ui fluid large teal submit button" onclick="db()">Login</div>
+                    <div class="ui fluid large teal submit button" onclick="db()" style="margin-bottom: 5px;">Login</div>
                     <a href="{{ path('register') }}"><div class="ui fluid large teal button" >Sign Up</div></a>
                 </div>
                 <div class="ui error message">

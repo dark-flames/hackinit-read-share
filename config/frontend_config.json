@@ -14,5 +14,11 @@
   "ocrHost": {
     "version": 4,
     "value": "#OCR_SERVER#"
+  },
+  "theme": {
+    "version": 1,
+    "value": {
+      "mainColor": "#00b5ad"
+    }
   }
 }

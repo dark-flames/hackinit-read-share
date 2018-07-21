@@ -10,4 +10,4 @@ fi
 cd ./assets/read-share-fe
 yarn build-dev
 
-cp -f dist/* "$path/public/build"
+cp -f dist/* "$path/public/dist"
