@@ -10,6 +10,4 @@ fi
 cd ./assets/read-share-fe
 yarn build-dev
 
-echo "$path/public/js/main.js"
-
-cp -f dist/* "$path/public/js"
+cp -f dist/* "$path/public/build"
