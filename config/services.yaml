@@ -42,3 +42,7 @@ services:
             $projectDir: '%kernel.project_dir%'
             $cache: '@frontend_config_cache'
             $container: '@service_container'
+
+    ReadShare\Library\SearchEngine\Elasticsearch:
+        arguments:
+            $esHost: '%env(ES_HOST)%'
