@@ -25,3 +25,6 @@ yarn-error.log
 .idea
 .DS_Store
 
+assets/read-share-fe/node_modules
+assets/read-share-fe/dist
+
