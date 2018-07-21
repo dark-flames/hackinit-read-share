@@ -1,0 +1,47 @@
+{
+  "name": "read-share-fe",
+  "version": "1.0.0",
+  "description": "frontend of hackinit project read-share",
+  "main": "src/main.js",
+  "author": "dark-flames <dark_flames@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "eslint . --ext .js,.vue && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build-dev": "eslint . --ext .js,.vue && cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "lint": "eslint . --ext .js,.vue",
+    "lint-fix": "eslint . --fix --ext .js,.vue",
+    "boom": "rm -rf dist/*.* .cache node_modules"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "eslint": "^5.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-vue": "^4.7.0",
+    "file-loader": "^1.1.4",
+    "localforage": "^1.7.2",
+    "lodash": "^4.17.10",
+    "qs": "^6.5.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
+}

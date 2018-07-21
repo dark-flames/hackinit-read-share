@@ -1,0 +1,22 @@
+{
+  "extends": ["standard", "plugin:vue/recommended"],
+  "plugins": ["vue"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 3,
+      "multiline": {
+        "max": 3,
+        "allowFirstLine": false
+      }
+    }]
+  },
+  "globals": {
+    "_globals": false
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  }
+}

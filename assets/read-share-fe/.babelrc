@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "chrome >= 40"]
+      }
+    }],
+    "stage-3"
+  ],
+  "plugins": [
+    "transform-runtime"
+  ]
+}

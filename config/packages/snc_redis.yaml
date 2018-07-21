@@ -1,0 +1,32 @@
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: "%env(REDIS_URL)%/1"
+            logging: "%kernel.debug%"
+        doctrine:
+            type: predis
+            alias: doctrine
+            dsn: "%env(REDIS_URL)%/2"
+            logging: "%kernel.debug%"
+        session:
+            type: predis
+            alias: session
+            dsn: "%env(REDIS_URL)%/3"
+            logging: "%kernel.debug%"
+    session:
+        client: session
+        prefix: session
+    doctrine:
+        result_cache:
+            client: doctrine
+            entity_manager: [default]
+            document_manager: [default]
+            namespace: "dcrc:"
+        query_cache:
+            client: doctrine
+            entity_manager: default
+        second_level_cache:
+            client: doctrine
+            entity_manager: default
