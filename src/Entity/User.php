@@ -153,6 +153,4 @@ class User implements UserInterface, FrontendSerializableInterface {
 
         return $obj;
     }
-
-
 }
