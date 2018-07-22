@@ -27,7 +27,7 @@ export default {
         display: block;
         border: 1px solid #ddd;
         border-radius: 3px;
-        margin: 10px 6px 10px 6px;
+        margin: 10px 10px 10px 10px;
     }
     .user-card {
         display: block;

@@ -36,7 +36,7 @@ abstract class AbstractDocumentModel {
      * 返回QueryBuilder对应的QueryType
      * @return mixed
      */
-    abstract public function getType();
+    abstract public static function getType();
 
     /**
      * 根据id获得实体

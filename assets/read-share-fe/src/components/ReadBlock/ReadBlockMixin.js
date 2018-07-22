@@ -1,7 +1,8 @@
 export default {
   data () {
     return {
-      content: ''
+      content: '',
+      loading: false
     }
   },
   watch: {

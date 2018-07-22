@@ -7,7 +7,7 @@ use ReadShare\Library\SearchEngine\SearchableInterface;
 use ReadShare\Library\SearchEngine\SearchEngine;
 
 class CommentDocumentModel extends AbstractDocumentModel {
-    public function getType() {
+    public static function getType() {
         return DocumentModelType::Comment;
     }
 
@@ -20,26 +20,6 @@ class CommentDocumentModel extends AbstractDocumentModel {
     public function getIDByEntity(SearchableInterface $entity): int {
         /** @var Comment $entity */
         return $entity->getId();
-    }
-
-    public function updateDocumentsByEntities(SearchEngine $searchEngine) {
-        $offset = 0;
-        while(true) {
-            $qb = $this->entityManager->createQueryBuilder();
-
-            $comments = $qb->select('c.*')
-                ->from(Comment::class, 'c')
-                ->setMaxResults(50)
-                ->setFirstResult($offset * 50);
-
-            if(!$comments || empty($comments))
-                break;
-
-            foreach ($comments as $comment)
-                $searchEngine->update($comment);
-
-            $offset ++;
-        }
     }
 
     public function getDocumentByEntity(SearchableInterface $entity): array {
@@ -63,8 +43,9 @@ class CommentDocumentModel extends AbstractDocumentModel {
     protected function getEntities($offset, $limit): array {
         $qb = $this->entityManager->createQueryBuilder();
 
-        return $qb->select('c.*')
+        return $qb->select('c')
             ->from(Comment::class, 'c')
+            ->where('1=1')
             ->setMaxResults($limit)
             ->setFirstResult($offset * $limit)
             ->getQuery()

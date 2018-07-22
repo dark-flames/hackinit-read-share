@@ -39,6 +39,7 @@ class SearchEngine {
         try {
             $this->elasticsearch->instance->indices()
                 ->delete(['index' => self::IndexName . $typeName]);
+            //throw new \Exception(self::IndexName . $typeName);
         } catch(Missing404Exception $e){}
 
         $documentModel = $this->documentModelRegistry->get($type);
@@ -81,7 +82,7 @@ class SearchEngine {
 
         //新建索引并更新所有数据
         $this->elasticsearch->instance->indices()->create($indexConfig);
-        //$documentModel->updateDocumentsByEntities($this);
+        $documentModel->updateDocumentsByEntities($this);
     }
 
     /**
@@ -154,19 +155,30 @@ class SearchEngine {
 
     /**
      * @param array $query
+     * @param callable $filterFactory
      * @return SearchableInterface[]
      */
-    public function queryNew(array $query) {
+    public function queryNew(array $query, callable $filterFactory = null) {
         $type = $query['type'];
+
+        $query['index'] = self::IndexName . $type;
+
         $documentModel = $this->documentModelRegistry->get(DocumentModelType::getType($type));
 
         $result = $this->elasticsearch->instance->search($query)['hits']['hits'];
 
-        $entities = [];
+        if($filterFactory) {
+            /** @var callable $filter */
+            $filter = $filterFactory($result);
 
-        foreach($result as $item) {
-            $entities[] = $documentModel->getEntityByID($item['_id']);
+            $items = array_filter($result, $filter);
+        } else {
+            $items = $result;
         }
+
+        $entities = array_map(function ($item) use ($documentModel) {
+            return $documentModel->getEntityByID($item['_id']);
+        }, $items);
 
         return $entities;
     }
@@ -185,7 +197,11 @@ class SearchEngine {
             DocumentModelType::getTypeByEntity($entity)
         );
 
-        $documentModel->updateDocumentByEntity($entity);
+        $this->update(
+            $documentModel::getType(),
+            $documentModel->getIDByEntity($entity),
+            $documentModel->getDocumentByEntity($entity)
+        );
     }
 
     /**

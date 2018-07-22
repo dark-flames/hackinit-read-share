@@ -5,7 +5,6 @@ const startApp = async (rootComponent, currentData, currentUser) => {
   await Store._setup()
   Vue.prototype.$config = Store.config
   Vue.prototype.$currentUser = currentUser
-  console.log(Store.config)
 
   const Constructor = Vue.extend(rootComponent)
 

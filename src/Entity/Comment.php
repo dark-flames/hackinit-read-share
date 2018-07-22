@@ -32,14 +32,14 @@ class Comment implements FrontendSerializableInterface, SearchableInterface {
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $content;
 
     /**
      * @var $content
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $targetContent;
 

@@ -21,6 +21,9 @@ class AbstractController extends SymonfyAbstractController {
 
         if($user instanceof User)
             $injection['currentUser'] = $user->detailJsonSerialize();
+        else {
+            return $this->redirectToRoute('login');
+        }
 
         return $this->render('application.html.twig', [
             '_injection' => $injection,

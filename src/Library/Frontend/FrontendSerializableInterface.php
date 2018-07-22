@@ -1,7 +1,7 @@
 <?php
 namespace ReadShare\Library\Frontend;
 
-interface FrontendSerializableInterface {
+interface FrontendSerializableInterface extends \JsonSerializable {
     /**
      * @return array
      */

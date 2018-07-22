@@ -11,11 +11,11 @@ class IndexController extends AbstractController {
      * @Route("/app", name="app")
      * @return Response
      */
-    public function testAction() {
+    public function appAction() {
         return $this->renderFrontendApp(
             'test',
-            'test',
-            [ 'test' => 'hw']
+            'ReadShare',
+            ['version' => '0.0.1']
         );
     }
     /**

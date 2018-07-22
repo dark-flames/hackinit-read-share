@@ -13,11 +13,6 @@ const Store = {
 
     const updateConfig = async configName => {
       if (!localVersion[configName] || localVersion[configName] < newVersion[configName]) {
-        if (!localVersion[configName]) {
-          console.log('newConfig')
-        } else if (localVersion[configName] < newVersion[configName]) {
-          console.log('updateConfig')
-        }
         try {
           const configItem = await requestGet(`/_fe/config/${configName}`)
           await this._configStore.setItem(configName, configItem)
@@ -25,7 +20,7 @@ const Store = {
           console.log(`Catch an Error while get config ${configName}.`)
         }
       }
-      localVersion[configName] = newVersion
+      localVersion[configName] = newVersion[configName]
     }
 
     await Promise.all(Object.keys(newVersion).map(updateConfig))

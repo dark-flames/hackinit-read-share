@@ -37,6 +37,7 @@ export default {
     },
     finishInput (content) {
       this.commentContent = content
+      this.$emit('new', content)
       this.closeInputArea()
     }
   }
@@ -59,9 +60,10 @@ export default {
   .comment-list {
     display: block;
     position: absolute;
+    overflow-y: auto;
     width: 100%;
     top: 0;
-    bottom: 45px;
+    bottom: 65px;
   }
 
   .btn {
